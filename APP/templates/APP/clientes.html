@@ -1,0 +1,55 @@
+{% extends "APP/main.html" %}
+{% load static %}
+{% block css %}
+{% endblock css %}
+{% block Main %}
+
+
+<form id="formulario" class="loginform" method="POST" enctype=multipart/form-data>
+    <h1>Ingresar datos de cliente</h1>
+    {% csrf_token%}
+    {{formulario.as_p}}
+    <input class="btn btn-primary" type="submit" value="Enviar">
+</form>
+<div class="contenedorMain">
+
+
+{% if request.user.is_authenticated %}
+<div class="container cuadro">
+    <div class="row">
+      <div class="col-md-12">
+          <h1 class="text-center">
+              Datos de clientes
+            </h1>
+        </div>
+      <div id="no-more-tables">
+          <table class="col-md-12 table-bordered table-striped table-condensed cf">
+              <thead class="cf">
+                  <tr>
+                      <th>Cliente</th>
+                      <th>Patente</th>
+                      <th class="numeric">Fecha de ingreso</th>
+                      <th class="numeric">Detalles</th>
+                      <th class="numeric">Total</th>
+                    </tr>
+                </thead>
+          <tbody>
+              {% for client in clientes  %}
+              <tr>
+                <td data-title="Code">{{client.nombre}}</td>
+                <td data-title="Company">{{client.patente}}</td>
+                <td data-title="Price" class="numeric">{{client.fechaDeIngreso}}</td>
+                <td data-title="Change" class="numeric">{{client.detalles}}</td>
+                <td data-title="Change" class="numeric">{{client.total}}</td>
+                
+            </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    </div>
+</div>
+
+</div>
+{% endif %}
+{% endblock Main %}

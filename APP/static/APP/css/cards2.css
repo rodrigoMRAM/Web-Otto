@@ -1,0 +1,128 @@
+@import url("https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@100;200;300;400;500&family=Poppins:wght@300;400;500;600;700;800&display=swap");
+
+:root {
+  font-size: 16px;
+  font-family: "Poppins";
+  --color-1: hsl(0, 0%, 5%);
+  --color-2: hsl(0, 0%, 95%);
+  --color-3: hsl(0, 0%, 30%);
+  --color-4: hsla(0, 0%, 55%, 0.5);
+  --color-5: hsl(35, 81%, 56%);
+  --bottom-margin: 1rem;
+}
+
+*,
+*::before,
+*::after {
+  padding: 0;
+  margin: 0;
+
+.card-container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 2rem;
+}
+
+.cards {
+  background-color: var(--color-2);
+  max-width: 20rem;
+  display: flex;
+  flex-direction: column;
+  padding: 1.5rem 1rem;
+  height: 600px;
+  text-align: center;
+  align-items: center;
+  border-radius: 0.5em;
+  box-shadow: 0 0.1rem 0.1rem 0 rgba(0, 0, 0, 0.34);
+  -webkit-box-shadow: 0 0.1rem 0.1rem 0 rgba(0, 0, 0, 0.34);
+  -moz-box-shadow: 0 0.1rem 0.1rem 0 rgba(0, 0, 0, 0.34);
+}
+
+.model-picture {
+  width: 100%;
+  border-radius: 0.25em;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.cards:hover > .model-picture {
+  transform: translateY(-10%);
+  box-shadow: 0rem 1.2rem 1rem 0rem rgba(0, 0, 0, 0.34);
+  -webkit-box-shadow: 0rem 1.2rem 1rem 0rem rgba(0, 0, 0, 0.34);
+  -moz-box-shadow: 0rem 1.2rem 1rem 0rem rgba(0, 0, 0, 0.34);
+}
+
+.type {
+  background-color: var(--color-1);
+  font-size: 1rem;
+  padding: 1em 2em;
+  border-radius: 2em;
+  transform: translateY(-50%);
+  color: var(--color-2);
+  box-shadow: 0rem 0.6rem 0.5rem 0rem rgba(0, 0, 0, 0.34);
+  -webkit-box-shadow: 0rem 0.6rem 0.5rem 0rem rgba(0, 0, 0, 0.34);
+  -moz-box-shadow: 0rem 0.6rem 0.5rem 0rem rgba(0, 0, 0, 0.34);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.cards:hover > .type {
+  box-shadow: 0rem 0rem 0rem 0rem rgba(0, 0, 0, 0.34);
+  -webkit-box-shadow: 0rem 0rem 0rem 0rem rgba(0, 0, 0, 0.34);
+  -moz-box-shadow: 0rem 0rem 0rem 0rem rgba(0, 0, 0, 0.34);
+  transform: translateY(-40%);
+}
+.cards img{
+    height: 300px;
+}
+
+.card-title {
+  font-size: 1.5rem;
+  font-weight: 500;
+  /* background-color: green; */
+  margin-bottom: var(--bottom-margin);
+}
+
+.description {
+  padding-bottom: 1rem;
+  margin-bottom: calc(var(--bottom-margin) * 2);
+  border: solid;
+  border-width: 0 0 0.15rem 0;
+  border-color: var(--color-4);
+  color: var(--color-3);
+  font-weight: 500;
+  font-size: 0.9rem;
+}
+
+.shopping-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+.price {
+  font-size: 2rem;
+  color: var(--color-3);
+}
+
+.basket-button {
+  font-size: 1.25rem;
+  padding: 0.5em;
+  border: solid;
+  border-width: 0.2rem;
+  border-radius: 50%;
+  cursor: pointer;
+  outline: none;
+  background: var(--color-2);
+  transition: border .2s ease, background-color .2s ease, color .2s ease;
+}
+
+.basket-button:hover{
+    background-color: var(--color-5);
+    border-color: var(--color-5);
+    border-color: var(--color-5);
+    color: var(--color-2);
+}

@@ -1,0 +1,104 @@
+<html lang="en">
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Taller de pintura Otto</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.6.1/font/bootstrap-icons.css" />
+    <link rel="stylesheet"  href="{% static 'APP/css/style.css' %}">
+    <link href='https://fonts.googleapis.com/css?family=Arbutus Slab' rel='stylesheet'>
+    {% block css %}
+    {% endblock css %}
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+    <link rel="stylesheet" href="{% static 'APP/css/cards2.css' %}">
+    <link rel="stylesheet" href="{% static 'APP/css/contacto.css' %}">
+    <script src="https://kit.fontawesome.com/4d548a4e76.js" crossorigin="anonymous"></script>
+   
+</head>
+<body>
+    <style>
+        #imagen-cambiante { /* Ajusta el tamaño de acuerdo a tus preferencias */
+          border: 2px solid #ccc; /* Agrega un borde si lo deseas */
+          transition: opacity 0.2s ease-in-out; /* Agrega una transición de opacidad cuando cambie la imagen */
+          filter: brightness(0.7);
+
+        }
+      </style>
+      
+    <nav class="navbar navbar-expand-sm p-3 fixed-top">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="#">
+            <img src="{% static 'APP/img/otto.png' %}" alt="HK Logo" class="logo-img" style="width:90px;"> 
+          </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#collapsibleNavbar">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="collapsibleNavbar">
+              <ul class="navbar-nav">
+                <li class="nav-item ps-5">
+                  <a class="nav-link" href={%url "raiz"%}>Inicio</a>
+                </li>
+                <li class="nav-item ps-5">
+                  <a class="nav-link" href={% url "nosotros" %}>Nosotros</a>
+                </li>
+                <li class="nav-item ps-5">
+                  <a class="nav-link" href={%url "login"%}>Galeria</a>
+                </li>
+                <li class="nav-item ps-5">
+                    <a class="nav-link" href="#conctatame">Contacto</a>
+                  </li>
+              </ul>
+
+            </div>
+          </div>
+    </nav>
+    <div class="whatsapp">
+      <img src="{%static 'APP/img/whatsapp.png'%}" alt="logo de whatsapp" srcset="" >
+    </div>
+    <div class="instagram">
+      <img src="{%static 'APP/img/instaLogo.png'%}" alt="logo de instagram" srcset="" >
+    </div>
+
+{% block Main %}
+
+{% endblock Main %}
+
+
+<footer>
+  <div class="footer">
+    <div class="footerNav">
+
+      <a href="">Inicio</a>
+      <a href="">Nosotros</a>
+      <a href="">Galeria</a>
+      <a href="">Contacto</a>
+    </div>
+    <div class="redes">
+      <h3>Redes</h3>
+      <img src="{%static 'APP/img/instaLogo.png'%}" alt="" srcset="" width="50px">
+    </div>
+    <div className="pagos">
+      <h3>Medios de Pago</h3>
+      <div className="pagosLogo">
+      <img src="{%static 'APP/img/mercadopago.png'%}" alt="" width="50px" height="31.67px" />
+      <img src="{%static 'APP/img/visa.png'%}" alt="" width="50px" />
+      <img src="{%static 'APP/img/mastercard.png'%}" alt="" width="50px" />
+      </div>
+  </div>
+    <p>Taller de pinturas Otto</p>
+  </div>
+</footer>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+
+<!--       
+<script src="code.js"></script> -->
+      
+      
+</body>
+</html>
