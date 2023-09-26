@@ -355,3 +355,38 @@ animation: border-animation 2s infinite;
     width: 100%!important;
   }
 }
+
+
+.formulario{
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 50px;
+}
+
+form{
+  display: flex;
+  flex-direction: column;
+}
+
+form p {
+  display: flex;
+  flex-direction: column;
+}
+
+.loginform{
+  background-color: hsl(0, 0%, 95%);
+  padding: 40px;
+  border-radius: 10px;
+}
+
+.editarFormulario{
+  margin-top: 50px;
+  margin-bottom: 50px;
+}
+
+.cuadro{
+  margin-top: 50px;
+}

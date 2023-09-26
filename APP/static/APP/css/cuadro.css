@@ -28,6 +28,7 @@
       padding-left: 50%;
       white-space: normal;
       text-align: left;
+      padding-bottom: 5px;
     }
   
     #no-more-tables td:before {

@@ -1,17 +1,20 @@
 {% extends "APP/main.html" %}
 {% load static %}
 {% block css %}
+<link rel="stylesheet" href="{% static 'APP/css/cuadro.css' %}">
 {% endblock css %}
 {% block Main %}
 
+<div class="formulario">
 
-<form id="formulario" class="loginform" method="POST" enctype=multipart/form-data>
-    <h1>Ingresar datos de cliente</h1>
-    {% csrf_token%}
-    {{formulario.as_p}}
-    <input class="btn btn-primary" type="submit" value="Enviar">
-</form>
-<div class="contenedorMain">
+    <form id="formulario" class="loginform" method="POST" enctype=multipart/form-data>
+        <h1>Ingresar datos de cliente</h1>
+        {% csrf_token%}
+        {{formulario.as_p}}
+        <input class="btn btn-primary" type="submit" value="Agregar">
+    </form>
+</div>
+    <div class="contenedorMain">
 
 
 {% if request.user.is_authenticated %}
@@ -36,11 +39,13 @@
           <tbody>
               {% for client in clientes  %}
               <tr>
-                <td data-title="Code">{{client.nombre}}</td>
-                <td data-title="Company">{{client.patente}}</td>
-                <td data-title="Price" class="numeric">{{client.fechaDeIngreso}}</td>
-                <td data-title="Change" class="numeric">{{client.detalles}}</td>
-                <td data-title="Change" class="numeric">{{client.total}}</td>
+                <td data-title="Cliente">{{client.nombre}}</td>
+                <td data-title="Patente">{{client.patente}}</td>
+                <td data-title="Fecha" class="numeric">{{client.fechaDeIngreso}}</td>
+                <td data-title="Detalles" class="numeric">{{client.detalles}}</td>
+                <td data-title="Total" class="numeric">${{client.total}} <a href={% url "eliminar" client.id %}>Eliminar</a>
+                <a href={% url "editar" client.id %}>Editar</a></td>
+                
                 
             </tr>
             {% endfor %}
