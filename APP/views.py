@@ -6,7 +6,7 @@ from django.contrib.auth.mixins import LoginRequiredMixin,UserPassesTestMixin
 from APP.forms import CustomAuthenticationForm
 from django.urls import reverse_lazy
 from APP.models import Clientes
-
+from .filters import ListingFilter
 
 # Create your views here.
 def mostrar_inicio(request):
@@ -40,6 +40,8 @@ def lista_clientes(request):
             cliente.save()
             clientes = Clientes.objects.all()
             formulario = Datos()
+
+
             return render(request, "APP/clientes.html",{"datos":datos, "formulario" : formulario , "clientes":clientes})
     else:
         formulario = Datos()
@@ -62,3 +64,15 @@ class ClienteUpdate(UpdateView):
     model = Clientes
     success_url = "/clientes/"
     fields = ['nombre', 'patente',"fechaDeIngreso", "detalles", "total"]
+
+
+
+# FILTRO
+
+def filtro(request):
+    clientes = Clientes.objects.all()
+    listing_filter = ListingFilter(request.GET , queryset=clientes)
+    context = {
+        'listing_filter': listing_filter
+    }
+    return render(request,'APP/filtro.html', context)

@@ -1,0 +1,67 @@
+{% extends "APP/main.html" %}
+{% load static %}
+{% block css %}
+<link rel="stylesheet" href="{% static 'APP/css/cuadro.css' %}">
+{% endblock css %}
+{% block Main %}
+
+<div class="formulario">
+    
+    <form method="get">
+        {% csrf_token %} 
+        {{listing_filter.form}}
+        <button class="btn btn-sm btn-primary" type="submit">Filtrar</button>
+      </form>
+
+</div>
+    <div class="contenedorMain">
+
+
+{% if request.user.is_authenticated %}
+<div class="container cuadro">
+    <div class="row">
+      <div class="col-md-12">
+        <a class="btn btn-primary" href={%url "filtro"%}>Borrar filtro</a>
+        <a class="btn btn-primary" href={%url "clientes"%}>Agregar cliente</a>
+          <h1 class="text-center">
+              Datos de clientes
+            </h1>
+        </div>
+        {%if not listing_filter.qs%}
+
+        <h4 class="coincidencias">No se encontraron coincidencias</h4>
+  
+      {%endif%}
+      <div id="no-more-tables">
+          <table class="col-md-12 table-bordered table-striped table-condensed cf">
+              <thead class="cf">
+                  <tr>
+                      <th>Cliente</th>
+                      <th>Patente</th>
+                      <th class="numeric">Fecha de ingreso</th>
+                      <th class="numeric">Detalles</th>
+                      <th class="numeric">Total</th>
+                    </tr>
+                </thead>
+          <tbody>
+              {% for listing in listing_filter.qs %}
+              <tr>
+                <td data-title="Cliente">{{listing.nombre}}</td>
+                <td data-title="Patente">{{listing.patente}}</td>
+                <td data-title="Fecha" class="numeric">{{listing.fechaDeIngreso}}</td>
+                <td data-title="Detalles" class="numeric">{{listing.detalles}}</td>
+                <td data-title="Total" class="numeric">${{listing.total}} <a href={% url "eliminar" listing.id %}>Eliminar</a>
+                <a href={% url "editar" listing.id %}>Editar</a></td>
+                
+                
+            </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    </div>
+</div>
+
+</div>
+{% endif %}
+{% endblock Main %}
