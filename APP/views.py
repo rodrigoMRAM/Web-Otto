@@ -8,6 +8,9 @@ from django.urls import reverse_lazy
 from APP.models import Clientes
 from .filters import ListingFilter
 from django.contrib.auth.models import User
+from django.contrib.auth.forms import PasswordChangeForm
+from django.contrib import messages
+from django.contrib.auth.decorators import login_required
 
 # Create your views here.
 def mostrar_inicio(request):
@@ -30,7 +33,7 @@ class ClientesCreateView(LoginRequiredMixin, CreateView):
     template_name = "APP/clientes_form.html"
     success_url = reverse_lazy("raiz")
 
-
+@login_required
 def lista_clientes(request):
     if request.method == "POST":
         formulario = Datos(request.POST)
@@ -51,7 +54,7 @@ def lista_clientes(request):
 
     return render(request, "APP/clientes.html",{"formulario":formulario,"clientes":clientes})
 
-
+@login_required
 def delete(request, id):
      eliminar = Clientes.objects.get(id=id)
      eliminar.delete()
@@ -69,7 +72,7 @@ class ClienteUpdate(UpdateView):
 
 
 # FILTRO
-
+@login_required
 def filtro(request):
     clientes = Clientes.objects.all()
     listing_filter = ListingFilter(request.GET , queryset=clientes)
@@ -90,3 +93,25 @@ class UserDetalle(DetailView):
 
     model = User
     template_name ="APP/user_detail.html"
+
+
+
+class UserLogout(LogoutView):
+    template_name = 'APP/index.html'
+
+@login_required
+def cambiar_contraseña(request):
+    if request.method == 'POST':
+        form = PasswordChangeForm(request.user, request.POST)
+        if form.is_valid():
+            user = form.save()
+            messages.success(request, 'Contraseña cambiada con éxito.')
+            # Redirigir a una página de confirmación o a donde desees.
+            return redirect('clientes')
+        else:
+            messages.error(request, 'Error al cambiar la contraseña. Por favor, corrija los errores.')
+
+    else:
+        form = PasswordChangeForm(request.user)
+
+    return render(request, 'APP/cambiarPass.html', {'form': form})

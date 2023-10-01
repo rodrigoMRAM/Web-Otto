@@ -1,0 +1,18 @@
+{% extends "APP/main.html" %}
+{% load static %}
+{% block css %}
+<link rel="stylesheet" href="{% static 'APP/css/cuadro.css' %}">
+{% endblock css %}
+{% block Main %}
+
+<div class="formulario">
+    <h2>Cambiar Contraseña</h2>
+    <form class="loginform"  method="post" action="{% url 'cambiarPass' %}">
+      {% csrf_token %}
+      {{ form.as_p }}
+      <button type="submit" class="btn btn-primary">Cambiar Contraseña</button>
+    </form>
+
+</div>
+
+{% endblock Main %}

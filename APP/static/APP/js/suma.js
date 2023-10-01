@@ -6,7 +6,7 @@ const resultado = document.querySelector(".resultado")
 suma = 0;
 
 // Iterar a través de los elementos y sumar sus valores
-boton.addEventListener("click",()=>{
+window.addEventListener("load",()=>{
 
     for (let i = 0; i < elementos.length; i++) {
         // Obtener el contenido del elemento como número (parseando la cadena)

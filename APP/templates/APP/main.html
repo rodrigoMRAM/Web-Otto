@@ -52,6 +52,18 @@
                 <li class="nav-item ps-5">
                     <a class="nav-link" href={%url "login"%}>Contacto</a>
                   </li>
+                  {% if request.user.is_authenticated %}
+                  <li class="nav-item ps-5 submenu">
+                    <img src="{% static 'APP/img/logo.png' %}" alt="" srcset="" width="30px" height="30px">
+                    <a >Perfil</a>
+                    <ul class="submenu-items">
+                        <li><a href={% url "clientes" %}>Clientes</a></li>
+                        <li><a class="" href={% url "editarusuario" user.id %}>Editar usuario</a></li>
+                        <li><a href={% url "cambiarPass" %}>Cambiar contraseña</a></li>
+                        <li><a class="" href={%url "logout"%}>Cerrar Sesión</a></li>
+                    </ul>
+                </li>
+                  {% endif %}
               </ul>
 
             </div>

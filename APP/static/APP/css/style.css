@@ -390,3 +390,51 @@ form p {
 .cuadro{
   margin-top: 50px;
 }
+.resultadoFinal{
+  display: flex;
+  flex-direction: row;
+}
+
+.usuario{
+  align-self: flex-end;
+}
+
+
+
+
+
+
+.submenu {
+  position: relative;
+}
+
+.submenu-items {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background-color: #333;
+}
+
+.submenu:hover .submenu-items {
+  display: block;
+}
+.submenu a{
+  text-decoration: none;
+  color: black;
+}
+
+.submenu-items li {
+  display: block;
+  width: 200px;
+}
+
+.submenu-items li a {
+
+  color: white;
+  text-decoration: none;
+}
+
+.submenu-items li a:hover {
+  background-color: #555;
+}
