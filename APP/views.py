@@ -7,6 +7,7 @@ from APP.forms import CustomAuthenticationForm
 from django.urls import reverse_lazy
 from APP.models import Clientes
 from .filters import ListingFilter
+from django.contrib.auth.models import User
 
 # Create your views here.
 def mostrar_inicio(request):
@@ -36,7 +37,7 @@ def lista_clientes(request):
         print(formulario)
         if formulario.is_valid:
             datos = formulario.cleaned_data
-            cliente = Clientes(nombre=datos["nombre"],patente=datos["patente"], fechaDeIngreso=datos["fechaDeIngreso"],detalles=datos["detalles"],total=datos["total"])
+            cliente = Clientes(nombre=datos["nombre"],patente=datos["patente"], mes=datos["mes"],dia=datos["dia"],age=datos["age"],detalles=datos["detalles"],total=datos["total"])
             cliente.save()
             clientes = Clientes.objects.all()
             formulario = Datos()
@@ -76,3 +77,16 @@ def filtro(request):
         'listing_filter': listing_filter
     }
     return render(request,'APP/filtro.html', context)
+
+
+
+class UserUpdate(UpdateView):
+
+    model = User
+    success_url = "/userlist/"
+    fields = ['username', 'email', 'last_name', 'first_name']
+
+class UserDetalle(DetailView):
+
+    model = User
+    template_name ="APP/user_detail.html"

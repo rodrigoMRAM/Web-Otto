@@ -1,0 +1,12 @@
+{% extends "APP/main.html" %}
+{% load static %}
+{% block css %}
+<link rel="stylesheet" href="{% static 'APP/css/cuadro.css' %}">
+{% endblock css %}
+{% block Main %}
+<p>Nombre : {{ user.username }}</p>
+    <p>Apellido: {{ user.email }}</p>
+    <p>pass: {{ user.password1 }}</p>
+    <p>Telefono: {{ transito.telefono }}</p>
+{% endblock Main %}
+

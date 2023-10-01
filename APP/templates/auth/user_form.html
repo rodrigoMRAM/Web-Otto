@@ -1,0 +1,14 @@
+{% extends "APP/main.html" %}
+{% load static %}
+{% block css %}
+<link rel="stylesheet" href="{% static 'APP/css/cuadro.css' %}">
+{% endblock css %}
+{% block Main %}
+
+<form id="formulario" class="loginform" method="POST" enctype=multipart/form-data>
+    <h1>Editar usuario</h1>
+    {% csrf_token%}
+    {{form.as_p}}
+    <input class="btn btn-primary" type="submit" value="Enviar">
+</form>
+{% endblock Main %}

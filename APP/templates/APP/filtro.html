@@ -23,6 +23,8 @@
       <div class="col-md-12">
         <a class="btn btn-primary" href={%url "filtro"%}>Borrar filtro</a>
         <a class="btn btn-primary" href={%url "clientes"%}>Agregar cliente</a>
+        <button type="button" class="btn btn-primary boton" >Sumar</button>
+        <div class="resultado"></div>
           <h1 class="text-center">
               Datos de clientes
             </h1>
@@ -33,7 +35,7 @@
   
       {%endif%}
       <div id="no-more-tables">
-          <table class="col-md-12 table-bordered table-striped table-condensed cf">
+          <table class="col-md-12 table-bordered table-striped table-condensed cf" >
               <thead class="cf">
                   <tr>
                       <th>Cliente</th>
@@ -43,15 +45,14 @@
                       <th class="numeric">Total</th>
                     </tr>
                 </thead>
-          <tbody>
+          <tbody class="miTabla">
               {% for listing in listing_filter.qs %}
               <tr>
                 <td data-title="Cliente">{{listing.nombre}}</td>
                 <td data-title="Patente">{{listing.patente}}</td>
-                <td data-title="Fecha" class="numeric">{{listing.fechaDeIngreso}}</td>
+                <td data-title="Fecha" class="numeric">{{listing.mes}} {{listing.dia}} {{listing.age}}</td>
                 <td data-title="Detalles" class="numeric">{{listing.detalles}}</td>
-                <td data-title="Total" class="numeric">${{listing.total}} <a href={% url "eliminar" listing.id %}>Eliminar</a>
-                <a href={% url "editar" listing.id %}>Editar</a></td>
+                <td data-title="Total" class="numeric suma" id="total">{{listing.total}} </td>
                 
                 
             </tr>

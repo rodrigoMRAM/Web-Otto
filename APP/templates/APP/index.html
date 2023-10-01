@@ -1,5 +1,9 @@
 {% extends "APP/main.html" %}
 {% load static %}
+{% block css %}
+<link rel="stylesheet" href="{%static 'APP/css/galeria.css'%}">
+<link rel="stylesheet" href="{%static 'APP/css/about.css'%}">
+{% endblock css %}
 
 {% block Main %}
 <div class="carousell">
@@ -42,6 +46,125 @@
     <p class="description">Obtenga una evaluación precisa de los costos para restaurar su vehículo. Nuestros especialistas evaluarán los daños y le brindarán un presupuesto transparente. La primera etapa hacia la renovación de su auto comienza aquí.</p>
 </div>
 </div>
+<div class="titulo" id="nosotros">
+
+  <h2>Nosotros</h2>
+</div>
+<div class="we-are-block">
+
+  <div id="about-us-section">
+
+    <div class="about-us-image">
+
+      <img src="{% static 'APP/img/auto.jpg' %}" width="808" height="458" alt="Lobby Image">
+
+    </div>
+
+    <div class="about-us-info">
+
+      <h2>Los Primeros Pasos:</h2>
+
+      <p>Corría el año 2000 cuando Oscar decidió dar el primer paso hacia su sueño. Con solo unas pocas herramientas en su taller de garaje y un incansable espíritu emprendedor, comenzó a reparar las chapas de los autos de amigos y vecinos. Su habilidad excepcional para devolverles su brillo y apariencia original no pasó desapercibida, y la noticia de su destreza se extendió rápidamente.</p>
+
+      <a href="#" title="About Us Button">Más</a>
+
+    </div>
+
+  </div>
+
+  <div id="history-section">
+
+    <div class="history-image">
+
+      <img src="{% static 'APP/img/auto2.jpg' %}" width="951" height="471" alt="Building Pic">
+
+    </div>
+
+    <div class="history-info">
+
+      <h2>La Fundación de Otto Reparaciones:</h2>
+
+      <p>A medida que la demanda de sus servicios creció, Oscar decidió formalizar su negocio y fundar "Otto Reparaciones". El nombre "Otto" fue elegido con cariño, en honor al primer automóvil que su abuelo había poseído, un viejo y robusto Otto 4HP que contaba historias de épocas pasadas. Con este nombre, la empresa tenía un vínculo especial con la tradición automovilística y la herencia familiar.</p>
+
+      <a href="#" title="History Button">Más</a>
+
+    </div>
+
+  </div>
+
+
+</div>
+
+
+ <div class="we-are-block">
+
+  <div id="about-us-section">
+
+    <div class="about-us-image">
+
+      <img src="{% static 'APP/img/chapa.jpg' %}" width="808" height="458" alt="Lobby Image">
+
+    </div>
+
+    <div class="about-us-info">
+
+      <h2>El Compromiso con la Calidad:</h2>
+
+      <p>Desde el principio, Otto Reparaciones se comprometió a utilizar las últimas tecnologías y técnicas de reparación, además de trabajar con los materiales de la más alta calidad. La misión era simple pero poderosa: "Devolver la belleza y la funcionalidad a cada vehículo que llega a nuestras puertas".</p>
+
+      <a href="#" title="About Us Button">Más</a>
+
+    </div>
+
+  </div>
+
+  <div id="history-section">
+
+    <div class="history-image">
+
+      <img src="{% static 'APP/img/auto2.jpg' %}" width="951" height="471" alt="Building Pic">
+
+    </div>
+
+    <div class="history-info">
+
+      <h2>El Crecimiento Sostenible:</h2>
+
+      <p>A medida que la reputación de Otto Reparaciones continuaba creciendo, la empresa expandió su equipo y sus instalaciones. Lo que comenzó como un modesto taller en un garaje se transformó en un centro de reparación de carrocería de vanguardia con tecnología de punta y un equipo de técnicos altamente capacitados</p>
+
+      <a href="#" title="History Button">Más</a>
+
+    </div>
+
+  </div>
+
+
+</div>
+
+
+
+<div class="titulo" id="galeria">
+
+  <h2>Galeria</h2>
+</div>
+<section class="containerX">
+  <article class="container__item">
+    <img src="{% static "APP/img/car.jpg" %}" alt="Fearless leader" width="800" height="534" />
+  </article>
+  <article class="container__item">
+    <img src="{% static "APP/img/car1.jpg" %}" alt="Southbank - Strike a Pose" width="800" height="534" />
+  </article>
+  <article class="container__item">
+    <img src="{% static "APP/img/car2.jpg" %}" alt="Tower Bridge, light trails" width="800" height="534" />
+  </article>
+  <article class="container__item">
+    <img src="{% static "APP/img/car3.jpg" %}" alt="The Clyde Arc" width="800" height="534" />
+  </article>
+  <article class="container__item">
+    <img src="{% static "APP/img/car4.jpg" %}" alt="Reflections at St Pauls" width="800" height="534" />
+  </article>
+</section>
+
 
 
 <div class="contacto">
@@ -65,11 +188,7 @@
 
       <textarea class="form-control" rows="10"  placeholder="Mensaje" name="message"></textarea>
 
-      <button class="btn btn-primary send-button" id="submit" type="submit" value="SEND">
-        <div class="button text-center">
-          <i class="fa fa-paper-plane "></i><span class="send-text">Enviar</span>
-        </div>
-
+      <button class="btn btn-primary send-button" id="submit" type="submit" value="SEND">Enviar
       </button>
 
     </form>
@@ -80,7 +199,7 @@
 
         <li class="list-item"><i class="fa fa-phone fa-1x"><span class="contact-text phone"><a href="tel:+1130430451" title="llamanos">1130430451</a></span></i></li>
 
-        <li class="list-item"><i class="fa fa-envelope fa-1x mail"><span class="contact-text gmail"><a href="mailto:theelecruisers@gmail.com" title="enviano un mail">ottopintura@gmail.com</a></span></i></li>
+        <li class="list-item"><i class="fa fa-envelope fa-1x mail"><span class="contact-text gmail"><a href="mailto:theelecruisers@gmail.com" title="enviano un mail">Enviar Mail</a></span></i></li>
 
       </ul>
 

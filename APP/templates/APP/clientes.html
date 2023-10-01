@@ -6,7 +6,8 @@
 {% block Main %}
 
 <div class="formulario">
-
+    <a href={% url "userUpdate" user.id %}>HOLAAAA</a>
+    <a href={% url "editarusuario" user.id %}>EDITAR USUARIO</a>
     <form id="formulario" class="loginform" method="POST" enctype=multipart/form-data>
         <h1>Ingresar datos de cliente</h1>
         {% csrf_token%}
@@ -42,7 +43,7 @@
               <tr>
                 <td data-title="Cliente">{{client.nombre}}</td>
                 <td data-title="Patente">{{client.patente}}</td>
-                <td data-title="Fecha" class="numeric">{{client.fechaDeIngreso}}</td>
+                <td data-title="Fecha" class="numeric">{{client.mes}} {{client.dia}} {{client.age}}</td>
                 <td data-title="Detalles" class="numeric">{{client.detalles}}</td>
                 <td data-title="Total" class="numeric">${{client.total}} <a href={% url "eliminar" client.id %}>Eliminar</a>
                 <a href={% url "editar" client.id %}>Editar</a></td>
@@ -57,5 +58,7 @@
 </div>
 
 </div>
+
+
 {% endif %}
 {% endblock Main %}
