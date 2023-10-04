@@ -40,16 +40,17 @@ def lista_clientes(request):
         print(formulario)
         if formulario.is_valid:
             datos = formulario.cleaned_data
-            cliente = Clientes(nombre=datos["nombre"],patente=datos["patente"], mes=datos["mes"],dia=datos["dia"],age=datos["age"],detalles=datos["detalles"],total=datos["total"])
+            nombreMayus = ' '.join(word.capitalize() for word in datos["nombre"].split())
+            cliente = Clientes(nombre=nombreMayus,patente=datos["patente"], mes=datos["mes"],dia=datos["dia"],age=datos["age"],detalles=datos["detalles"],total=datos["total"])
             cliente.save()
-            clientes = Clientes.objects.all()
+            clientes = Clientes.objects.all().order_by('-id')
             formulario = Datos()
 
 
             return render(request, "APP/clientes.html",{"datos":datos, "formulario" : formulario , "clientes":clientes})
     else:
         formulario = Datos()
-        clientes = Clientes.objects.all()
+        clientes = Clientes.objects.all().order_by('-id')
 
 
     return render(request, "APP/clientes.html",{"formulario":formulario,"clientes":clientes})
@@ -67,14 +68,14 @@ class ClienteUpdate(UpdateView):
 
     model = Clientes
     success_url = "/clientes/"
-    fields = ['nombre', 'patente',"fechaDeIngreso", "detalles", "total"]
+    fields = ['nombre', 'patente',"mes","dia","age", "detalles", "total"]
 
 
 
 # FILTRO
 @login_required
 def filtro(request):
-    clientes = Clientes.objects.all()
+    clientes = Clientes.objects.all().order_by('-id')
     listing_filter = ListingFilter(request.GET , queryset=clientes)
     context = {
         'listing_filter': listing_filter
@@ -115,3 +116,5 @@ def cambiar_contraseña(request):
         form = PasswordChangeForm(request.user)
 
     return render(request, 'APP/cambiarPass.html', {'form': form})
+
+

@@ -438,3 +438,18 @@ form p {
 .submenu-items li a:hover {
   background-color: #555;
 }
+
+
+.togle{
+  display: none;
+}
+.eliminarConfirmar{
+  background-color: white;
+  position: absolute;
+  padding: 30;
+  border: 1px solid #555;
+  border-radius: 10px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
