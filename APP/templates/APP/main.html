@@ -19,6 +19,25 @@
     <link rel="stylesheet" href="{% static 'APP/css/contacto.css' %}">
     <link rel="stylesheet" href="{% static 'APP/css/loader.css' %}">
     <script src="https://kit.fontawesome.com/4d548a4e76.js" crossorigin="anonymous"></script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+
+    <meta
+      name="description"
+      content="Taller de pintura Otto, chapa, pintura"
+    />
+    <meta property="og:title" content="Taller de pintura Otto, chapa, pintura">
+    <meta property="og:description" content="Taller de pintura Otto, chapa, pintura">
+    <meta property="og:url" content="https://www.ottochapaypintura.com.ar">
+    <meta property="og:site_name" content="ottochapaypintura">
+    <meta property="og:type" content="website">
+    <meta name="keywords" content="Taller de pintura Otto, chapa, pintura, Pablo Podesta">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Taller de pintura Otto">
+    <meta name="twitter:description" content="Taller de pintura Otto en Pablo Podesta">
+    <meta name="twitter:image" content="">
    
 </head>
 <body class="hidden">
@@ -50,7 +69,7 @@
     <nav class="navbar navbar-expand-sm p-3 fixed-top">
         <div class="container-fluid">
           <a class="navbar-brand" href="#">
-            <img src="{% static 'APP/img/otto.png' %}" alt="HK Logo" class="logo-img" style="width:90px;"> 
+            <img src="{% static 'APP/img/otto.png' %}" alt="logo otto" class="logo-img" style="width:90px;"> 
           </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#collapsibleNavbar">
               <span class="navbar-toggler-icon"></span>
@@ -71,7 +90,7 @@
                   </li>
                   {% if request.user.is_authenticated %}
                   <li class="nav-item ps-5 submenu">
-                    <img src="{% static 'APP/img/logo.png' %}" alt="" srcset="" width="30px" height="30px">
+                    <img src="{% static 'APP/img/logo.png' %}" alt="logo perfil" srcset="" width="30px" height="30px">
                     <a >Perfil</a>
                     <ul class="submenu-items">
                         <li><a href={% url "clientes" %}>Clientes</a></li>
@@ -109,20 +128,21 @@
     </div>
     <div class="redes">
       <h3>Redes</h3>
-      <img src="{%static 'APP/img/instaLogo.png'%}" alt="" srcset="" width="50px">
+      <img src="{%static 'APP/img/instaLogo.png'%}" alt="logo de instagram" srcset="" width="50px">
     </div>
     <div className="pagos">
       <h3>Medios de Pago</h3>
       <div className="pagosLogo">
-      <img src="{%static 'APP/img/mercadopago.png'%}" alt="" width="50px" height="31.67px" />
-      <img src="{%static 'APP/img/visa.png'%}" alt="" width="50px" />
-      <img src="{%static 'APP/img/mastercard.png'%}" alt="" width="50px" />
+      <img src="{%static 'APP/img/mercadopago.png'%}" alt="mercado pago" width="50px" height="31.67px" />
+      <img src="{%static 'APP/img/visa.png'%}" alt="logo visa" width="50px" />
+      <img src="{%static 'APP/img/mastercard.png'%}" alt="logo de mastercard" width="50px" />
       </div>
   </div>
     <p>Taller de pinturas Otto</p>
   </div>
 </footer>
     <script src="{%static 'APP/js/loader.js'%}"></script>
+    <script src="{%static 'APP/js/navbar.js'%}"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="{%static 'APP/js/suma.js'%}"></script>
 

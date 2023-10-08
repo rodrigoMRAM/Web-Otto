@@ -1,11 +1,12 @@
 {% extends "APP/main.html" %}
+{% load humanize %}
 {% load static %}
 {% block css %}
 <link rel="stylesheet" href="{% static 'APP/css/cuadro.css' %}">
 {% endblock css %}
 {% block Main %}
 
-<div class="formulario">
+<div class="formulario formularioClientesLogin">
     
     <form method="get">
         {% csrf_token %} 
@@ -68,7 +69,7 @@
 </div>
 
 </div>
-
+<script src="{%static 'APP/js/redes.js'%}"></script>
 <script src="{%static 'APP/js/label.js'%}"></script>
 {% endif %}
 {% endblock Main %}

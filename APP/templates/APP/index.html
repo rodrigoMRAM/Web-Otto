@@ -7,19 +7,21 @@
 
 {% block Main %}
 <div class="carousell">
-    <img id="imagen-cambiante" src="{%static 'APP/img/toyota.jpg'%}" alt="Imagen 1" srcset="">
+    <img id="imagen-cambiante" src="{%static 'APP/img/toyota.jpg'%}" alt="logo de taller otto" srcset="">
     <h1 class="title">Taller de Chapa y Pintura</h1>
   </div>
 
 
 <div class="titulo">
-<h1>Chapa y Pintura</h1>
+  <div class="demo demox">
+    <div class="or or--x" aria-role="presentation">Info</div>
+</div>
 
 </div>
 
 <div class="card-container">
 <div class="cards">
-    <img src="{%static 'APP/img/auto.jpg'%}" alt="9qvWEF.jpeg" class="model-picture">
+    <img src="{%static 'APP/img/auto.jpg'%}" alt="logo de auto " class="model-picture">
     <h2 class="type">Chapa</h2>
     <h1 class="card-title">Reparación de Chapa: </h1>
     <p class="description">Devolvemos la belleza y la integridad a su vehículo. Eliminamos abolladuras, rayones y daños en la carrocería con precisión y calidad. Su auto, como nuevo, en manos de expertos.</p>
@@ -47,8 +49,9 @@
 </div>
 </div>
 <div class="titulo" id="nosotros">
-
-  <h2>Nosotros</h2>
+  <div class="demo">
+    <div class="or or--x" aria-role="presentation">Nosotros</div>
+</div>
 </div>
 <div class="we-are-block">
 
@@ -144,8 +147,9 @@
 
 
 <div class="titulo" id="galeria">
-
-  <h2>Galeria</h2>
+  <div class="demo">
+    <div class="or or--x" aria-role="presentation">Galeria</div>
+</div>
 </div>
 <section class="containerX">
   <article class="container__item">
@@ -170,7 +174,9 @@
 <div class="contacto">
 <section id="contact" class="container">
 
-  <h1 class="section-header" id="conctatame">Contacto</h1>
+  <div class="demo demox">
+    <div class="or or--x" aria-role="presentation"  id="conctatame" >Contacto</div>
+</div>
   <div class="contact-wrapper">
     <form class="form-horizontal" role="form" method="post" action="#">
       {% csrf_token %}

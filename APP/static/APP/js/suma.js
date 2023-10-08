@@ -17,7 +17,8 @@ window.addEventListener("load",()=>{
             suma += valor;
         }
     }
-    resultado.innerHTML = suma
+    resultadoConPuntos = suma.toLocaleString();
+    resultado.innerHTML = resultadoConPuntos
     console.log("La suma es: " + suma);
     
 })

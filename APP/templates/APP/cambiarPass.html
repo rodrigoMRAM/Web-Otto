@@ -5,7 +5,7 @@
 {% endblock css %}
 {% block Main %}
 
-<div class="formulario">
+<div class="formulario formularioClientesLogin">
     <h2>Cambiar Contraseña</h2>
     <form class="loginform"  method="post" action="{% url 'cambiarPass' %}">
       {% csrf_token %}
@@ -14,5 +14,6 @@
     </form>
 
 </div>
+<script src="{%static 'APP/js/redes.js'%}"></script>
 
 {% endblock Main %}
