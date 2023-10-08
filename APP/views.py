@@ -11,10 +11,34 @@ from django.contrib.auth.models import User
 from django.contrib.auth.forms import PasswordChangeForm
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
+from .forms import ContactForm
+from django.core.mail import send_mail
 
 # Create your views here.
 def mostrar_inicio(request):
     return render(request,"APP/index.html",{})
+def mostrar_inicio(request):
+    if request.method == 'POST':
+        form = ContactForm(request.POST)
+        if form.is_valid():
+            nombre = form.cleaned_data['nombre']
+            correo = form.cleaned_data['correo']
+            mensaje = form.cleaned_data['mensaje']
+            mensaje_completo = f"De: {nombre}\nCorreo: {correo}\n\nMensaje:\n{mensaje}"
+
+            send_mail(
+                'Mensaje desde el formulario de contacto',  # Asunto del correo
+                mensaje_completo,
+                correo,  # Dirección de correo del remitente
+                ['rodrigomacielth@gmail.com'],  # Dirección de correo del destinatario
+                fail_silently=False,
+            )
+            return redirect('raiz')  # Página de éxito después de enviar el formulario
+
+    else:
+        form = ContactForm()
+
+    return render(request, "APP/index.html", {'form': form})
 
 def nosotros(request):
     return render(request, "APP/nosotros.html")

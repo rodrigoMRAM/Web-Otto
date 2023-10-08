@@ -333,12 +333,12 @@ animation: border-animation 2s infinite;
   justify-content: center;
 }
 .title{
-  position: absolute;
+  position: relative;
   display: flex;
   justify-content: center;
   align-items: center;
   height: 100px;
-  top: 300px;
+  top: -200;
   margin: 0 auto;
   margin-left: 30px;
   font-size: 60px;

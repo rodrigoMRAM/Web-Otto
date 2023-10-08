@@ -21,7 +21,7 @@ urlpatterns = [
     path("cambiarPass/", cambiar_contraseña, name="cambiarPass" ),
 
     #RECUPERACION DE CONTRASEÑA
-    path("reset_password/" ,auth_views.PasswordResetView.as_view(template_name="APP/password_reset.html"), name="password_reset" ),
+    path("reset_password/" ,auth_views.PasswordResetView.as_view(template_name="APP/password_reset.html", html_email_template_name='APP/password_reset_email.html'), name="password_reset" ),
     path("reset_password_send/", auth_views.PasswordResetDoneView.as_view(template_name="APP/password_done.html"), name="password_reset_done"),
     path("reset/<uidb64>/<token>", auth_views.PasswordResetConfirmView.as_view(template_name="APP/password_confirm.html"), name='password_reset_confirm'),
     path("reset/done/", auth_views.PasswordResetCompleteView.as_view(template_name="APP/password_complete.html"), name='password_reset_complete')

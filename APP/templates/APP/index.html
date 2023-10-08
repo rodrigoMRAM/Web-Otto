@@ -173,20 +173,23 @@
   <h1 class="section-header" id="conctatame">Contacto</h1>
   <div class="contact-wrapper">
     <form class="form-horizontal" role="form" method="post" action="#">
-
+      {% csrf_token %}
       <div class="form-group">
         <div class="col-sm-12">
-          <input type="text" class="form-control" id="name" placeholder="Nombre" name="name" value="">
+          {% comment %} <input type="text" class="form-control" id="name" placeholder="Nombre" name="name" value=""> {% endcomment %}
+          {{form.nombre}}
         </div>
       </div>
 
       <div class="form-group">
         <div class="col-sm-12">
-          <input type="email" class="form-control" id="email" placeholder="Email" name="email" value="">
+          {% comment %} <input type="email" class="form-control" id="email" placeholder="Email" name="email" value=""> {% endcomment %}
+          {{form.correo}}
         </div>
       </div>
 
-      <textarea class="form-control" rows="10"  placeholder="Mensaje" name="message"></textarea>
+      {% comment %} <textarea class="form-control" rows="10"  placeholder="Mensaje" name="message"></textarea> {% endcomment %}
+      {{form.mensaje}}
 
       <button class="btn btn-primary send-button" id="submit" type="submit" value="SEND">Enviar
       </button>

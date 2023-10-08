@@ -26,3 +26,9 @@ class MiModeloForm(ModelForm):
     # Cambia la etiqueta del campo en el formulario
     username = forms.CharField(label='Usuario')
 
+
+class ContactForm(forms.Form):
+    nombre = forms.CharField(max_length=100 , widget=forms.TextInput(attrs={'class': 'form-control',"placeholder":"Nombre"}))
+    correo = forms.EmailField(widget=forms.EmailInput(attrs={'class': 'form-control',"placeholder":"Email"}))
+    mensaje = forms.CharField(widget=forms.Textarea(attrs={'class': 'form-control',"placeholder":"Mensaje"}))
+
