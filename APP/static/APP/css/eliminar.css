@@ -1,0 +1,66 @@
+.cuadroEliminar {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    margin: 0 auto;
+    align-items: center;
+    justify-content: center;
+    animation-name: eliminar;
+    animation-duration: 0.5s;
+    animation-fill-mode: forwards;
+  }
+  
+  @keyframes eliminar {
+    from {
+      opacity: 0;
+    }
+  }
+  
+  to {
+    opacity: 1;
+  }
+  
+  
+  .divEliminar {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+  
+    border-radius: 10px;
+    box-shadow: 4px 6px 34px -2px rgba(0, 0, 0, 0.65);
+    -webkit-box-shadow: 4px 6px 34px -2px rgba(0, 0, 0, 0.65);
+    -moz-box-shadow: 4px 6px 34px -2px rgba(0, 0, 0, 0.65);
+    padding: 30px 20px;
+  }
+  
+  strong {
+    color: red;
+  }
+  
+  .eliminacionBotones {
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  .info {
+    font-size: 20px;
+  }
+  /* links botones */
+  a{
+    font-size: 25px;
+    /* font-family: 'Pt-Sans', cursive; */
+    font-weight: bolder;
+  }
+  
+  .tacho {
+    align-items: center;
+  }
+
+
+  @media (max-width:700px ){
+  .cuadroEliminar{
+    width: 95%;
+  }
+
+  }

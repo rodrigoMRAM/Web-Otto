@@ -85,6 +85,10 @@ def delete(request, id):
      eliminar.delete()
      return redirect('clientes')
 
+class ClientesDeleteView(LoginRequiredMixin, DeleteView):
+    model = Clientes 
+    success_url = reverse_lazy('clientes')
+
 
 
 
