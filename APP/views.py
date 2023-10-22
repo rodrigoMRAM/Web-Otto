@@ -15,8 +15,8 @@ from .forms import ContactForm
 from django.core.mail import send_mail
 
 # Create your views here.
-def mostrar_inicio(request):
-    return render(request,"APP/index.html",{})
+# def mostrar_inicio(request):
+#     return render(request,"APP/index.html",{})
 def mostrar_inicio(request):
     if request.method == 'POST':
         form = ContactForm(request.POST)
@@ -51,12 +51,14 @@ class PanelLogin(LoginView):
 class PanelLogout(LogoutView):
     template_name = 'APP/index.html'
 
-class ClientesCreateView(LoginRequiredMixin, CreateView):
-    model = Clientes
-    fields = ['nombre' ,'patente', 'fechaDeIngreso', 'detalles','total']
-    template_name = "APP/clientes_form.html"
-    success_url = reverse_lazy("raiz")
+#EDITAR DATOS DE CLIENTES
+# class ClientesCreateView(LoginRequiredMixin, CreateView):
+#     model = Clientes
+#     fields = ['nombre', 'patente',"mes","dia","age", "detalles", "total"]
+#     template_name = "APP/clientes_form.html"
+#     success_url = reverse_lazy("raiz")
 
+#LISTA DE CLIENTES (PAGINA PRINCIPAL DE USUARIO)
 @login_required
 def lista_clientes(request):
     if request.method == "POST":
@@ -79,19 +81,21 @@ def lista_clientes(request):
 
     return render(request, "APP/clientes.html",{"formulario":formulario,"clientes":clientes})
 
+
 @login_required
 def delete(request, id):
      eliminar = Clientes.objects.get(id=id)
      eliminar.delete()
      return redirect('clientes')
 
+#ELIMINAR CLIENTE
 class ClientesDeleteView(LoginRequiredMixin, DeleteView):
     model = Clientes 
     success_url = reverse_lazy('clientes')
 
 
 
-
+# EDITAR CLIENTE
 class ClienteUpdate(UpdateView):
 
     model = Clientes
@@ -117,6 +121,7 @@ class UserUpdate(UpdateView):
     model = User
     success_url = "/userlist/"
     fields = ['username', 'email', 'last_name', 'first_name']
+
 
 class UserDetalle(DetailView):
 
@@ -144,5 +149,4 @@ def cambiar_contraseña(request):
         form = PasswordChangeForm(request.user)
 
     return render(request, 'APP/cambiarPass.html', {'form': form})
-
 

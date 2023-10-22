@@ -1,6 +1,6 @@
 from django.urls import path,include, re_path
 from django.contrib import admin
-from APP.views import mostrar_inicio, PanelLogin, PanelLogout, ClientesCreateView,ClientesDeleteView, nosotros, lista_clientes , delete, ClienteUpdate, filtro,UserDetalle,UserUpdate,cambiar_contraseña,UserLogout
+from APP.views import mostrar_inicio, PanelLogin, PanelLogout,ClientesDeleteView, nosotros, lista_clientes , delete, ClienteUpdate, filtro,UserDetalle,UserUpdate,cambiar_contraseña,UserLogout
 from django.contrib.auth import views as auth_views
 
 
@@ -9,7 +9,7 @@ urlpatterns = [
     path("nosotros", nosotros, name="nosotros"),
     path("login/", PanelLogin.as_view(), name="login"),
     path("logout/", PanelLogout.as_view(), name="logout"),
-    path('clientes/create/', ClientesCreateView.as_view(), name ="clientess" ),
+    # path('clientes/create/', ClientesCreateView.as_view(), name ="clientess" ),
     path("clientes/" ,lista_clientes, name="clientes"),
     # path("delete/<id>" , delete, name="eliminar"),
     path("clientes/<pk>/delete" ,ClientesDeleteView.as_view(),name="eliminar"),

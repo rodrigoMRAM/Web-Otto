@@ -125,10 +125,3 @@ STATIC_URL = 'static/'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 
-PASSWORD_RESET_EMAIL_TEMPLATE = 'APP/password_reset_email.html'
-EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
-EMAIL_HOST = "smtp.gmail.com"
-EMAIL_USE_TLS = True
-EMAIL_PORT = 587
-EMAIL_HOST_USER = "rodrigomacielth@gmail.com"
-EMAIL_HOST_PASSWORD = "kdik ozcc xtln mivo"
