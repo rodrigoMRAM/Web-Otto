@@ -30,5 +30,10 @@ class MiModeloForm(ModelForm):
 class ContactForm(forms.Form):
     nombre = forms.CharField(max_length=100 , widget=forms.TextInput(attrs={'class': 'form-control',"placeholder":"Nombre"}))
     correo = forms.EmailField(widget=forms.EmailInput(attrs={'class': 'form-control',"placeholder":"Email"}))
-    mensaje = forms.CharField(widget=forms.Textarea(attrs={'class': 'form-control',"placeholder":"Mensaje"}))
+    mensaje = forms.CharField(widget=forms.Textarea(attrs={'class': 'form-control',"placeholder":"Mensaje", 'style': 'resize:none'}))
 
+
+class TuModeloForm(forms.ModelForm):
+    class Meta:
+        model = Clientes
+        fields = ['age']

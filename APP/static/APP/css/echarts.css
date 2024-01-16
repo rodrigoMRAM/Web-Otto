@@ -1,0 +1,8 @@
+.vacio{
+    display: none;
+  }
+
+#main{
+    width: 400px;
+    height: 500px;
+}

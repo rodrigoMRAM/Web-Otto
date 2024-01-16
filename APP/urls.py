@@ -1,11 +1,12 @@
 from django.urls import path,include, re_path
 from django.contrib import admin
-from APP.views import mostrar_inicio, PanelLogin, PanelLogout,ClientesDeleteView, nosotros, lista_clientes , delete, ClienteUpdate, filtro,UserDetalle,UserUpdate,cambiar_contraseña,UserLogout
+from APP.views import mostrar_inicio, api,PanelLogin, PanelLogout,ClientesDeleteView, nosotros, lista_clientes , delete, ClienteUpdate, filtro,UserDetalle,UserUpdate,cambiar_contraseña,UserLogout
 from django.contrib.auth import views as auth_views
 
 
 urlpatterns = [
-    path('', mostrar_inicio,name='raiz'),
+    path('', mostrar_inicio, name='raiz'),
+    path('api/', api, name='api'),
     path("nosotros", nosotros, name="nosotros"),
     path("login/", PanelLogin.as_view(), name="login"),
     path("logout/", PanelLogout.as_view(), name="logout"),
@@ -25,7 +26,7 @@ urlpatterns = [
     path("reset_password/" ,auth_views.PasswordResetView.as_view(template_name="APP/password_reset.html", html_email_template_name='APP/password_reset_email.html'), name="password_reset" ),
     path("reset_password_send/", auth_views.PasswordResetDoneView.as_view(template_name="APP/password_done.html"), name="password_reset_done"),
     path("reset/<uidb64>/<token>", auth_views.PasswordResetConfirmView.as_view(template_name="APP/password_confirm.html"), name='password_reset_confirm'),
-    path("reset/done/", auth_views.PasswordResetCompleteView.as_view(template_name="APP/password_complete.html"), name='password_reset_complete')
+    path("reset/done/", auth_views.PasswordResetCompleteView.as_view(template_name="APP/password_complete.html"), name='password_reset_complete'),
 
 
 

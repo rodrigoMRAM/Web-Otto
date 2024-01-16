@@ -80,14 +80,21 @@
                   <a class="nav-link" href={%url "raiz"%}>Inicio</a>
                 </li>
                 <li class="nav-item ps-5">
-                  <a class="nav-link" href={% url "nosotros" %}>Nosotros</a>
+                  <a class="nav-link" href="http://127.0.0.1:8000/#nosotros">Nosotros</a>
                 </li>
                 <li class="nav-item ps-5">
-                  <a class="nav-link" href="#galeria">Galeria</a>
+                  <a class="nav-link" href="http://127.0.0.1:8000/#galeria">Galeria</a>
                 </li>
                 <li class="nav-item ps-5">
-                    <a class="nav-link" href={%url "login"%}>Contacto</a>
-                  </li>
+                  <a class="nav-link" href="http://127.0.0.1:8000/#contact">Contacto</a>
+                </li>
+                {% if request.user.is_authenticated %}
+                {% else %}
+                <li class="nav-item ps-5">
+                  <a class="nav-link" href={%url "login"%}>Iniciar Sesión</a>
+                </li>
+                {% endif %}
+                
                   {% if request.user.is_authenticated %}
                   <li class="nav-item ps-5 submenu">
                     <img src="{% static 'APP/img/logo.png' %}" alt="logo perfil" srcset="" width="30px" height="30px">

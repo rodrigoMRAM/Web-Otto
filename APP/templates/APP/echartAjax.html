@@ -1,0 +1,50 @@
+{% extends "APP/main.html" %}
+{% load static %}
+{% block Main %}
+<div class="container margen">
+<div class="formulario">
+    <h1>Tabla de valores anual</h1>
+    
+    <form method="post">
+        {% csrf_token %}
+        {{form.as_p}}
+        {% comment %} <select name="" id="">
+            
+            <option value="" name="ages"> </option>
+            
+        </select> {% endcomment %}
+        {% comment %} <select id="cboPais" class="form-control text-center"></select> {% endcomment %}
+        <button class="btn btn-primary" type="submit">Enviar</button>
+    </form>
+</div>
+    <div class="container" id="main" ></div>
+    
+    
+    {% comment %} <script>
+        $(document).ready(function () {
+            $.ajax({
+                url: 'http://127.0.0.1:8000/incomes/',  // Actualiza esto con tu URL
+                type: 'GET',
+                dataType: 'json',
+                success: function (data) {
+                    // 'data' ahora contiene los datos del modelo en formato JSON
+                    console.log(data);
+                    // Puedes procesar los datos aquí según tus necesidades
+                },
+                error: function (error) {
+                    console.log('Error al obtener datos:', error);
+                }
+            });
+        });
+    </script> {% endcomment %}
+    <div class="valormas">
+        
+    </div>
+    <div class="vacio">{% for x in xa %}
+        <p class='valores'>{{x}}</p>
+        {% endfor %}</div>
+    </div>
+        <script src="{%static 'APP/js/ajax.js'%}"></script>
+        <script src="{%static 'APP/js/echarts.min.js'%}"></script>
+        <script src="{%static 'APP/js/opcionEcharts.js'%}"></script>
+        {% endblock Main %}
