@@ -1,5 +1,10 @@
 /* Navbar styles and hover styles starts*/
-
+body{
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  justify-content: space-between;
+}
 .navbar{
   background-color: white;
   font-family: 'Arbutus Slab';

@@ -37,3 +37,6 @@ class TuModeloForm(forms.ModelForm):
     class Meta:
         model = Clientes
         fields = ['age']
+    def __init__(self, *args, **kwargs):
+        super(TuModeloForm, self).__init__(*args, **kwargs)
+        self.fields['age'].widget.attrs.update({'id': 'campo'})

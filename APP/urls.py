@@ -1,6 +1,6 @@
 from django.urls import path,include, re_path
 from django.contrib import admin
-from APP.views import mostrar_inicio, api,PanelLogin, PanelLogout,ClientesDeleteView, nosotros, lista_clientes , delete, ClienteUpdate, filtro,UserDetalle,UserUpdate,cambiar_contraseña,UserLogout
+from APP.views import mostrar_inicio, api,PanelLogin, PanelLogout,ClientesDeleteView, nosotros, lista_clientes , delete, ClienteUpdate, filtro,UserDetalle,UserUpdate,cambiar_contraseña,UserLogout,filtroanual,getapi
 from django.contrib.auth import views as auth_views
 
 
@@ -21,6 +21,8 @@ urlpatterns = [
     path("actualizacion/<pk>/edit", UserUpdate.as_view(), name="editarusuario"),
     path("logout/", UserLogout.as_view(), name="logout"),
     path("cambiarPass/", cambiar_contraseña, name="cambiarPass" ),
+    path("getapi/<id>/", getapi, name="getapi" ),
+    path("filtroanual/", filtroanual, name="filtroanual" ),
 
     #RECUPERACION DE CONTRASEÑA
     path("reset_password/" ,auth_views.PasswordResetView.as_view(template_name="APP/password_reset.html", html_email_template_name='APP/password_reset_email.html'), name="password_reset" ),

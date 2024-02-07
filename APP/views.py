@@ -164,6 +164,10 @@ def cambiar_contraseña(request):
 
 
 #ECHART FUNCION
+
+
+from django.db.models import Sum
+
 @login_required
 def api(request):
     if request.method == 'POST':
@@ -171,66 +175,45 @@ def api(request):
         if form1.is_valid():
             valor_seleccionado = form1.cleaned_data['age']
             datos = Clientes.MESES
-            enero = list(Clientes.objects.filter(mes='Enero' ,age =valor_seleccionado).values_list('total', flat=True))
-            febrero = list(Clientes.objects.filter(mes='Febrero',age =valor_seleccionado).values_list('total', flat=True))
-            marzo = list(Clientes.objects.filter(mes='Marzo',age =valor_seleccionado).values_list('total', flat=True))
-            abril = list(Clientes.objects.filter(mes='Abril',age =valor_seleccionado).values_list('total', flat=True))
-            mayo = list(Clientes.objects.filter(mes='Mayo',age =valor_seleccionado).values_list('total', flat=True))
-            junio = list(Clientes.objects.filter(mes='Junio',age =valor_seleccionado).values_list('total', flat=True))
-            julio = list(Clientes.objects.filter(mes='Julio',age =valor_seleccionado).values_list('total', flat=True))
-            agosto = list(Clientes.objects.filter(mes='Agosto',age =valor_seleccionado).values_list('total', flat=True))
-            septiembre = list(Clientes.objects.filter(mes='Septiembre',age =valor_seleccionado).values_list('total', flat=True))
-            octubre = list(Clientes.objects.filter(mes='Octubre',age =valor_seleccionado).values_list('total', flat=True))
-            noviembre = list(Clientes.objects.filter(mes='Noviembre',age =valor_seleccionado).values_list('total', flat=True))
-            diciembre = list(Clientes.objects.filter(mes='Diciembre',age =valor_seleccionado).values_list('total', flat=True))
+            meses = ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre']
+
             xa = []
-            numero = 0
-            meses = [enero,febrero,marzo,abril,mayo,junio,julio,agosto,septiembre,octubre,noviembre,diciembre]
+            for mes in meses:
+                total_mes = Clientes.objects.filter(mes=mes, age=valor_seleccionado).aggregate(Sum('total'))['total__sum']
+                xa.append(total_mes if total_mes else 0)
 
-            for x in meses:
-                if len(x) == 0:
-                    xa.append(0)
-                else:
-                    for y in x:   
-                        numero = numero+y
-                    xa.append(numero)
             form = TuModeloForm()
-            context = {'data': "Success",'datos' : datos, 'xa': xa ,'form' :form}
+            context = {'data': "Success", 'datos': datos, 'xa': xa, 'form': form}
             return render(request, 'APP/echartAjax.html', context)
-    else:
 
+    else:
         form = TuModeloForm()
 
+    return render(request, 'APP/echartAjax.html', {'form': form})
 
-    return render(request, 'APP/echartAjax.html', {'form': form })
 
 
-# def incomesAverage(request):
-#         datos = Clientes.MESES
-#         enero = list(Clientes.objects.filter(mes='Enero').values_list('total', flat=True))
-#         febrero = list(Clientes.objects.filter(mes='Febrero').values_list('total', flat=True))
-#         marzo = list(Clientes.objects.filter(mes='Marzo').values_list('total', flat=True))
-#         abril = list(Clientes.objects.filter(mes='Abril').values_list('total', flat=True))
-#         mayo = list(Clientes.objects.filter(mes='Mayo').values_list('total', flat=True))
-#         junio = list(Clientes.objects.filter(mes='Junio').values_list('total', flat=True))
-#         julio = list(Clientes.objects.filter(mes='Julio').values_list('total', flat=True))
-#         agosto = list(Clientes.objects.filter(mes='Agosto').values_list('total', flat=True))
-#         septiembre = list(Clientes.objects.filter(mes='Septiembre').values_list('total', flat=True))
-#         octubre = list(Clientes.objects.filter(mes='Octubre').values_list('total', flat=True))
-#         noviembre = list(Clientes.objects.filter(mes='Noviembre').values_list('total', flat=True))
-#         diciembre = list(Clientes.objects.filter(mes='Diciembre').values_list('total', flat=True))
-#         xa = []
-#         numero = 0
+# Filtro de Ingresos Anuales
+def filtroanual(request):
+    form =TuModeloForm()
+    return render(request, 'APP/obtenerAPI.html',{'form':form})
 
-#         meses = [enero,febrero,marzo,abril,mayo,junio,julio,agosto,septiembre,octubre,noviembre,diciembre]
 
-#         for x in meses:
-#             if len(x) == 0:
-#                 xa.append(0)
-#             else:
-#                 for y in x:   
-#                     numero = numero+y
-#                 xa.append(numero)
-        
-#         context = {'data': "Success",'datos' : datos, 'xa': xa}
-#         return JsonResponse(context)
+#  Filtro de valores mensuales formato JSON para filtroanual()
+def getapi(request,id):
+    if request.method == 'GET':
+        # datos = Clientes.MESES
+        print(id)
+        meses = ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre']
+
+        mesesArray = []
+        for mes in meses:
+            total_mes = Clientes.objects.filter(mes=mes, age=id).aggregate(Sum('total'))['total__sum']
+            mesesArray.append(total_mes if total_mes else 0)
+
+ 
+        data = {'message': 'Esta es una respuesta AJAX desde Django.','mesesArray': mesesArray}
+        return JsonResponse(data)
+    else:
+        # Manejar la solicitud de otra manera (por ejemplo, devolver un error HTTP 400)
+        return JsonResponse({'error': 'Invalid request'})
